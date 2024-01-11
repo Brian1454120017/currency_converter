@@ -1,6 +1,6 @@
 // ConverterScreen.js
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
+import { View, Text, TextInput, Button, StyleSheet, TouchableOpacity } from 'react-native';
 
 const ConverterScreen = ({ currency, currencySymbol}) => {
   const [kwachaAmount, setKwachaAmount] = useState('');
@@ -32,8 +32,15 @@ const ConverterScreen = ({ currency, currencySymbol}) => {
         value={kwachaAmount}
         onChangeText={(text) => setKwachaAmount(text)}
       />
-      <Button title="Convert" onPress={convertCurrency} />
-      <Text style={styles.result}>{`Results: ${currencySymbol}`} {convertedAmount}</Text>
+
+      <TouchableOpacity onPress={convertCurrency} >
+        <Text style={styles.button}>CONVERT</Text>
+      </TouchableOpacity>
+    
+    <View style={styles.resultsContainer}>
+      <Text style={styles.result}>{`Value =`}</Text>
+      <Text style={styles.convertedAmount}>  {currencySymbol} {convertedAmount}</Text>
+    </View>
     </View>
   );
 };
@@ -44,23 +51,52 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+
   title: {
     fontSize: 20,
     fontWeight: 'bold',
-    marginBottom: 20,
+    marginBottom: 50,
+    color: '#ff3300',
   },
   input: {
     width: 200,
     height: 40,
-    borderColor: 'gray',
+    borderColor: '#ff3300',
     borderWidth: 1,
+    borderRadius: 50,
     marginBottom: 10,
     textAlign: 'center',
   },
+
+  button: {
+    backgroundColor: '#ff3300',
+    color: '#ffffff',
+    padding: 10,
+    width: 100,
+    textAlign: 'center',
+    borderRadius: 50,
+    fontWeight: 'bold'
+  },
+
+  resultsContainer: {
+    flexDirection: 'row',
+    marginTop: 30,
+    justifyContent: 'center',
+    verticalAlign: 'middle',
+  },
+
   result: {
-    marginTop: 20,
-    fontSize: 18,
+
+    fontSize: 22,
     fontWeight: 'bold',
+    color: '#fdb915',
+  },
+
+  convertedAmount: {
+  
+    fontSize: 22,
+    fontWeight: 'bold',
+    color: '#ff3300',
   },
 });
 
