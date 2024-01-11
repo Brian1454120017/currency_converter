@@ -9,10 +9,11 @@ import ZMWToEuroScreen from './screens/ZMWToEuroScreen';
 
 const Tab = createBottomTabNavigator();
 
+
 const App = () => {
   return (
     <NavigationContainer>
-      <Tab.Navigator>
+      <Tab.Navigator screenOptions={{headerShown: false}}>
         <Tab.Screen name="Home" component={HomeScreen} />
         <Tab.Screen name="ZMW to USD" component={ZMWToUSDScreen} />
         <Tab.Screen name="ZMW to GBP" component={ZMWToPoundScreen} />
